@@ -45,22 +45,20 @@ quick tests, and we dedicate the last 5 minutes for the tests. It means that you
 very little to no time to test your code before the evaluation._
 
 __About the tests:__
-1) Take-off (1min): Quad on the floor, it is set to GUIDED mode with altitude command at -1 
+* Take-off (1min): Quad on the floor, it is set to GUIDED mode with altitude command at -1 
 meter. Autonomous flight until the end.
-2) Downward step (1min): Quad stabilized at -1 meter, the altitude command is set to -0.5 
+* Downward step (1min): Quad stabilized at -1 meter, the altitude command is set to -0.5 
 meter. Autonomous flight until the end.
-3) Upward step (1min): Quad stabilized at -0.5 meter, the altitude command is set to -1 
+* Upward step (1min): Quad stabilized at -0.5 meter, the altitude command is set to -1 
 meter. Autonomous flight until the end.
-4) Box (1min): Quad stabilized at -1 meter, a 30cm box is inserted under the quad. 
+* Box (1min): Quad stabilized at -1 meter, a 30cm box is inserted under the quad. 
 Autonomous flight until the end. The quad should not be disturbed by the box.
 
 You will not be allowed to change parameters during and between the tests
 
 For each test, we will measure:
-1) Rise time: ie. the time required to reach the command altitude.
-2) Stabilization time: the time required to reach a window of +/- 20cm around the target 
+* Rise time: ie. the time required to reach the command altitude.
+* Stabilization time: the time required to reach a window of +/- 20cm around the target 
 altitude and never go out.
-3) Overshoot: Maximum error after rise time and before stabilization time.
-4) Precision: Average deviation from target altitude once stabilized.
-
-
+* Overshoot: Maximum error after rise time and before stabilization time.
+* Precision: Average deviation from target altitude once stabilized.
