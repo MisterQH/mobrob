@@ -35,13 +35,13 @@ As these sensor's sampling frequency is slow, the quadrotor's velocity needs als
 By applying a \emph{low-pass} filter on the sonar and a \emph{high-pass} on the accelerometer integrated twice, we would theoretically have a good altitude estimation. This solution will potentially success the box test since the altitude's change will be noticed only by the sonar, while the accelerometer won't spot any change. Therefore, we can assume that the quadrotor altitude doesn't need to be updated.
 
 \subsection{Kalman filter}
-The bigger the state vector, the better the altitude estimation. However, the complexity increases and the error state becomes tricky to characterize. 
+The bigger the state vector, the better the altitude estimation. However, the complexity increases and the model becomes tricky to characterize. 
 
 \subsection{Solution kept}
-TO DO
+Kalman filter yields to the best results but is too binding in terms of complexity to characterize the model properly. This is why we chose the accelerometer \& sonar complementary filter solution. 
 
 \section{Altitude control}
-TO DO
+We plan to use two cascaded \emph{PID} to control the quadrotor's position and velocity. This solution seems to be good since we can be aggressive in speed while being more smooth on the position, leading to an easier tuning of the controller.
 
 \section{Planning}
 TO DO
