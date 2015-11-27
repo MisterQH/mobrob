@@ -46,14 +46,40 @@ quite precise (resolution 1cm ) but consist of an relative altitude measurement 
 \
 Due to the fact that the sensors aren\'92t precise either and the relative altitude doesn\'92t success to analyse the add of the box, we need to combine multiple sensors. \
 \
-Filter Method. \
 \
-Complementary filter: \
 \
+
+\fs36 Altitude determination : 
+\fs24 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Filter Method. \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+Complementary\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 - barometer/sonar\
+	\
+As we have a very low sampling frequency , the velocity of the quad rotor has to be slow too and so the first test of the practical would be neglect . As the barometer as a big drift, it seems to be difficult to estimate the altitude.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
 - accelerometer/sonar\
-- accelerometer/barometer\
-- barometer/sonar\
-- all in one\
+\
+Sonar low pass, accelerometer high pass. \
+Good solution. if we have changes of the value of the sonar and not on the accelerometer, we can now that the absolute altitude of the quadrotor hasn\'92t changes (TEST4).\
+\
+\
+Kalmann\
+\
+The bigger the state vector, the better. But increase the complexity of the algorithme and it could tricky to well characterize the error state\
+\
+
+\fs36 Altitude control: 
+\fs24 \
+\
+\
+The \
 \
 \
 }
