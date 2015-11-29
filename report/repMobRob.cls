@@ -29,7 +29,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[version=3]{mhchem}
-\usepackage[retainorgcmds]{IEEEtrantools}
+%\usepackage[retainorgcmds]{IEEEtrantools}
 \usepackage{siunitx}
 
 %Figures packages
