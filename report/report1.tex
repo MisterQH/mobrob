@@ -23,7 +23,7 @@ Furthermore, its sampling frequency (\SI{40}{\hertz}) is lower then the frequenc
 \subsection{Barometer}
 The barometer is less precise than the sonar (typical \emph{RMS noise} of \SI{25}{\centi\meter} and a resolution of \SI{20}{\centi\meter}).
 It returns an absolute altitude measurement, but it's drift is very limiting.
-Also the changes of pressure induced by the environment (e.g. closing or opening a door) will distort the measurements.
+Also the changes of pressure induced by the environment (e.g.\ closing or opening a door) will distort the measurements.
 The sampling frequency is the same as the sonar's when using the ultra high resolution mode (\SI{40}{\hertz}).
 
 \subsection{Accelerometer}
@@ -51,7 +51,7 @@ A quite complex \emph{Kalman filter} which tracks altitude, height, vertical spe
 In order to follow an agile developing process and have a minimal working version as soon as possible, we will implement a complementary filter with the accelerometer and sonar.
 A possible iteration would be to add the barometer.
 
-\section{Altitude control}
+\section{Control}
 We plan to use two cascaded \emph{PIDs} to control the quadrotor's velocity and position. Like that we can split the problem by tuning two controllers separately.
 
 \section{Planning}
