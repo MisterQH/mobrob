@@ -41,7 +41,7 @@ The bigger the state vector, the better the altitude estimation. However, the co
 Kalman filter yields to the best results but is too binding in terms of complexity to characterize the model properly. This is why we chose the accelerometer \& sonar complementary filter solution. 
 
 \section{Altitude control}
-We plan to use two cascaded \emph{PID} to control the quadrotor's position and velocity. This solution seems to be good since we can be aggressive in speed while being more smooth on the position, leading to an easier tuning of the controller.
+We plan to use two cascaded \emph{PIDs} to control the quadrotor's velocity and position. Like that we can split the problem by tuning two controllers separately.
 
 \section{Planning}
 \begin{table}[H]
