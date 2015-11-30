@@ -16,7 +16,9 @@
 
 \section{Sensors}
 \subsection{Sonar}
-The sonar is quite precise (resolution \SI{1}{\centi\meter} ) but consists of a relative altitude measurement (and thus won’t be useful for skipping the box). Furthermore, its sampling frequency is low (\SI{40}{\hertz}) and thus cannot be fast enough to be the only sensor considered for controlling the altitude. Additionally, it tends to drift and the quality of the measurement will depend of the reflexion surface. Those two last elements have to be determined by tests. However, as the quadrotor will only process vertical translation, the limitation of its beam pattern won’t interfere with our measurement.
+The sonar delivers a high resolution and low noise measurement compared to the other sensors (\SI{1}{\centi\meter} resolution with noise in the same order of magnitude).
+But it's a measure of height (as opposed to a measure of altitude) and is not sufficent to control the altitude.
+Furthermore, its sampling frequency (\SI{40}{\hertz}) is lower then the frequency of our \emph{contorl-loop}.
 
 \subsection{Barometer}
 The barometer is less precise than the sonar (typical \emph{RMS noise} of \SI{25}{\centi\meter} and a resolution of \SI{20}{\centi\meter}).
