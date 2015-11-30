@@ -1,2 +1,0 @@
-MAVRIC_Library
-==============
