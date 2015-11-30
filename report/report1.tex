@@ -19,7 +19,10 @@
 The sonar is quite precise (resolution \SI{1}{\centi\meter} ) but consists of a relative altitude measurement (and thus won’t be useful for skipping the box). Furthermore, its sampling frequency is low (\SI{40}{\hertz}) and thus cannot be fast enough to be the only sensor considered for controlling the altitude. Additionally, it tends to drift and the quality of the measurement will depend of the reflexion surface. Those two last elements have to be determined by tests. However, as the quadrotor will only process vertical translation, the limitation of its beam pattern won’t interfere with our measurement.
 
 \subsection{Barometer}
-The barometer is less precise than the sonar (typical \emph{RMS noise} of \SI{25}{\centi\meter} and a resolution of \SI{20}{\centi\meter}). It returns an absolute altitude measurement. The sampling frequency is the same than sonar for the ultra high resolution mode (\SI{40}{\hertz}). The changes of pressure induced by the environment (e.g. closing or opening a door) will distort the measurements.
+The barometer is less precise than the sonar (typical \emph{RMS noise} of \SI{25}{\centi\meter} and a resolution of \SI{20}{\centi\meter}).
+It returns an absolute altitude measurement, but it's drift is very limiting.
+Also the changes of pressure induced by the environment (e.g. closing or opening a door) will distort the measurements.
+The sampling frequency is the same as the sonar's when using the ultra high resolution mode (\SI{40}{\hertz}).
 
 \subsection{Accelerometer}
 The accelerometer isn't an altitude sensor but provides us with informations about the quadrotor movements. Its sampling frenquency is \SI{250}{\hertz}. 
