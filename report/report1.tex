@@ -32,17 +32,24 @@ Its bias is very important and the measurement can't just be integrated twice to
 Its sampling frenquency is \SI{250}{\hertz} and thus the only one coming close to our \emph{control-loop} frequency. 
 
 \section{Altitude determination}
-Giving the fact that none of the sensors individually meets all of our needs (particularly the box that is inserted as a distrubance), we need to fuse two or more of them. 
+Giving the fact that none of the sensors individually meets all of our needs (particularly the box that is inserted as a disturbance), we need to fuse two or more of them. 
 
-\subsection{Complementary filter}
-\subsubsection{Barometer \& sonar}
-As these sensor's sampling frequency is slow, the quadrotor's velocity needs also to bo low to respect Shannon's criterion. This approach is certainly not good enough to success the different tests, as the raising time is limited. Additionally, the barometer has a lot of drift, which would yield to a complex altitude estimation.
+\subsection{Accelerometer \& sonar}
+By applying a \emph{low-pass} filter on the sonar and adding the double integral of a \emph{high-passed} accelerometer signal, we have low-noise reference to the ground while also measuring actual movements of the quad (as opposed to changes of the environment) with a high frequency.
+The limitation of this setup is, that setpoint changes can only be realtive to the current altitude or height and never absolute.
 
-\subsubsection{Accelerometer \& sonar}
-By applying a \emph{low-pass} filter on the sonar and a \emph{high-pass} on the accelerometer integrated twice, we would theoretically have a good altitude estimation. This solution will potentially success the box test since the altitude's change will be noticed only by the sonar, while the accelerometer won't spot any change. Therefore, we can assume that the quadrotor altitude doesn't need to be updated.
+\subsection{Barometer \& sonar}
+The frequency at which this setup could estimate the altitude is probably too slow for it to be used for control.
+Also, the barometer's drift is a big problem.
+A possibility would be to use the barometer for the high frequency changes and the sonar for the steady-state.
+This could yeild similar results as the accelerometer \& sonar setup.
+
+\subsection{Accelerometer, barometer \& sonar}
+A quite complex \emph{Kalman filter} which tracks altitude, height, vertical speed, and barometer as well as accelerometer bias could handle the fusion of all three sensors.
 
 \subsection{Solution kept}
-Kalman filter yields to the best results but is too binding in terms of complexity to characterize the model properly. This is why we chose the accelerometer \& sonar complementary filter solution. 
+In order to follow an agile developing process and have a minimal working version as soon as possible, we will implement a complementary filter with the accelerometer and sonar.
+A possible iteration would be to add the barometer.
 
 \section{Altitude control}
 We plan to use two cascaded \emph{PIDs} to control the quadrotor's velocity and position. Like that we can split the problem by tuning two controllers separately.
