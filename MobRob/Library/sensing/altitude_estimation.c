@@ -98,7 +98,7 @@ void altitude_estimation_update(altitude_estimation_t* estimator)
     float delta_t = (float)(time_stamp - time_stamp_old) / 1000000.0f;
     time_stamp_old = time_stamp;
 
-    float sonar_filtered = low_pass_filter(estimator->sonar->distance,
+    float sonar_filtered = low_pass_filter(estimator->sonar->current_distance,
                                            sonar_old,
                                            delta_t,
                                            1.0f);
