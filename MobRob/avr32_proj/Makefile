@@ -252,6 +252,7 @@ LIB_SRCS += control/velocity_controller_copter.c
 LIB_SRCS += sensing/ahrs.c            
 LIB_SRCS += sensing/ahrs_telemetry.c  
 LIB_SRCS += sensing/altitude_estimation.c  
+LIB_SRCS += sensing/altitude_estimation_telemetry.c  
 LIB_SRCS += sensing/imu.c             
 LIB_SRCS += sensing/imu_telemetry.c                  
 LIB_SRCS += sensing/position_estimation.c            

@@ -264,7 +264,9 @@ src/mavlink_telemetry.d src/mavlink_telemetry.o src/mavlink_telemetry.o: \
  ../Library/control/joystick_parsing.h \
  ../Library/sensing/simulation_telemetry.h \
  ../Library/sensing/simulation.h ../Library/runtime/scheduler_telemetry.h \
- ../Library/runtime/scheduler.h ../Library/hal/sonar_telemetry.h
+ ../Library/runtime/scheduler.h ../Library/hal/sonar_telemetry.h \
+ ../Library/sensing/altitude_estimation_telemetry.h \
+ ../Library/sensing/altitude_estimation.h
 
 ../src/mavlink_telemetry.h:
 
@@ -875,3 +877,7 @@ d:\programmes\atmel\studio\7.0\toolchain\avr32\avr32-gnu-toolchain\bin\../lib/gc
 ../Library/runtime/scheduler.h:
 
 ../Library/hal/sonar_telemetry.h:
+
+../Library/sensing/altitude_estimation_telemetry.h:
+
+../Library/sensing/altitude_estimation.h:

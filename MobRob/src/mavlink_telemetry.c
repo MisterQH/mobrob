@@ -70,6 +70,8 @@
 
 #include "constants.h"
 
+#include "altitude_estimation_telemetry.h"
+
 central_data_t *central_data;
 
 //------------------------------------------------------------------------------
@@ -362,7 +364,7 @@ void mavlink_telemetry_init(void)
 										2	);
 	mavlink_communication_add_msg_send(	mavlink_communication,	
 										500000,		
-										RUN_NEVER,		
+										RUN_REGULAR,		
 										PERIODIC_ABSOLUTE,	
 										PRIORITY_NORMAL,	
 										(mavlink_send_msg_function_t)&bmp085_telemetry_send_pressure,		
@@ -476,6 +478,15 @@ void mavlink_telemetry_init(void)
 										(mavlink_send_msg_function_t)&sonar_telemetry_send,						
 										&central_data->sonar_i2cxl.data,				
 										20	);
+
+	mavlink_communication_add_msg_send(	mavlink_communication,	
+										100000,		
+										RUN_REGULAR,	
+										PERIODIC_ABSOLUTE,	
+										PRIORITY_NORMAL,	
+										(mavlink_send_msg_function_t)&altitude_estimation_telemetry_send,						
+										&central_data->altitude_estimation,				
+										21	);
 
 	scheduler_sort_tasks(&central_data->mavlink_communication.scheduler);
 	
