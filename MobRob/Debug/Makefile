@@ -156,6 +156,7 @@ C_SRCS +=  \
 ../Library/sensing/ahrs.c \
 ../Library/sensing/ahrs_telemetry.c \
 ../Library/sensing/altitude_estimation.c \
+../Library/sensing/altitude_estimation_telemetry.c \
 ../Library/sensing/imu_telemetry.c \
 ../Library/sensing/position_estimation.c \
 ../Library/sensing/position_estimation_telemetry.c \
@@ -285,6 +286,7 @@ Library/runtime/scheduler_telemetry.o \
 Library/sensing/ahrs.o \
 Library/sensing/ahrs_telemetry.o \
 Library/sensing/altitude_estimation.o \
+Library/sensing/altitude_estimation_telemetry.o \
 Library/sensing/imu_telemetry.o \
 Library/sensing/position_estimation.o \
 Library/sensing/position_estimation_telemetry.o \
@@ -407,6 +409,7 @@ Library/runtime/scheduler_telemetry.o \
 Library/sensing/ahrs.o \
 Library/sensing/ahrs_telemetry.o \
 Library/sensing/altitude_estimation.o \
+Library/sensing/altitude_estimation_telemetry.o \
 Library/sensing/imu_telemetry.o \
 Library/sensing/position_estimation.o \
 Library/sensing/position_estimation_telemetry.o \
@@ -529,6 +532,7 @@ Library/runtime/scheduler_telemetry.d \
 Library/sensing/ahrs.d \
 Library/sensing/ahrs_telemetry.d \
 Library/sensing/altitude_estimation.d \
+Library/sensing/altitude_estimation_telemetry.d \
 Library/sensing/imu_telemetry.d \
 Library/sensing/position_estimation.d \
 Library/sensing/position_estimation_telemetry.d \
@@ -651,6 +655,7 @@ Library/runtime/scheduler_telemetry.d \
 Library/sensing/ahrs.d \
 Library/sensing/ahrs_telemetry.d \
 Library/sensing/altitude_estimation.d \
+Library/sensing/altitude_estimation_telemetry.d \
 Library/sensing/imu_telemetry.d \
 Library/sensing/position_estimation.d \
 Library/sensing/position_estimation_telemetry.d \
@@ -732,6 +737,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

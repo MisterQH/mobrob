@@ -28,7 +28,7 @@ The sampling frequency is the same as the sonar's when using the ultra high reso
 
 \subsection{Accelerometer}
 The accelerometer isn't an altitude sensor, but provides us with information about the quadrotor movements.
-Its bias is very important and the measurement can't just be integrated twice to yeild a position information without being fused with other sensors.
+Its bias is very important and the measurement can't just be integrated twice to yield a position information without being fused with other sensors.
 Its sampling frenquency is \SI{250}{\hertz} and thus the only one coming close to our \emph{control-loop} frequency. 
 
 \section{Altitude determination}
@@ -42,7 +42,7 @@ The limitation of this setup is, that setpoint changes can only be realtive to t
 The frequency at which this setup could estimate the altitude is probably too slow for it to be used for control.
 Also, the barometer's drift is a big problem.
 A possibility would be to use the barometer for the high frequency changes and the sonar for the steady-state.
-This could yeild similar results as the accelerometer \& sonar setup.
+This could yield similar results as the accelerometer \& sonar setup.
 
 \subsection{Accelerometer, barometer \& sonar}
 A quite complex \emph{Kalman filter} which tracks altitude, height, vertical speed, and barometer as well as accelerometer bias could handle the fusion of all three sensors.
