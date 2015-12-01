@@ -110,6 +110,8 @@ Library\sensing\ahrs_telemetry.c
 
 Library\sensing\altitude_estimation.c
 
+Library\sensing\altitude_estimation_telemetry.c
+
 Library\sensing\imu_telemetry.c
 
 Library\sensing\position_estimation.c
