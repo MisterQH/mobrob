@@ -42,3 +42,11 @@
 
 # Debug files
 *.dSYM/
+
+# Atmel studio
+*.atsuo
+*.map
+*.d
+*.eep
+*.lss
+*.srec
