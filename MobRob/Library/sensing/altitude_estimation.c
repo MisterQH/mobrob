@@ -87,44 +87,7 @@ static float high_pass_filter(float x, float x_old, float y_old, float deltaT, f
 void altitude_estimation_update(altitude_estimation_t* estimator)
 {
 
-    static float sonar_old = 0.0f;
-
-    static float acc_velocity = 0.0f;
-    static float acc_position = 0.0f;
-    static float acc_position_old = 0.0f;
-    static float acc_position_old_y = 0.0f;
-
-    static uint32_t time_stamp_old = 0;
-
-    uint32_t time_stamp = time_keeper_get_micros();
-
-    float delta_t = (float)(time_stamp - time_stamp_old) / 1000000.0f;
-    time_stamp_old = time_stamp;
-
-    float sonar_filtered = low_pass_filter(estimator->sonar->current_distance,
-                                           sonar_old,
-                                           delta_t,
-                                           1.0f);
-    sonar_old = sonar_filtered;
-
-    float acc_measured = -estimat->ahrs->linear_acc[2];
-
-    acc_position += acc_velocity * delta_t + 0.5 * acc_measured * delta_t * delta_t;
-    acc_velocity += acc_measured * delta_t;
-
-    float acc_position_filtered = high_pass_filter(acc_position,
-                                                   acc_position_old,
-                                                   acc_position_old_y,
-                                                   delta_t,
-                                                   1.0f);
-
-    acc_position_old = acc_position;
-    acc_position_old_y = acc_position_filtered;
-
-
-	//estimator->altitude_estimated->above_ground = -estimator->sonar->current_distance;
-	estimator->altitude_estimated->above_ground = sonar_filtered + acc_position_filtered;
-
+	estimator->altitude_estimated->above_ground = -estimator->sonar->current_distance;
 	estimator->altitude_estimated->above_sea 	= 400.0f;
 
 }
