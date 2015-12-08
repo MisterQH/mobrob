@@ -103,7 +103,8 @@ task_return_t tasks_run_stabilisation(void* arg)
 	remote_update( &central_data->remote );
 	
 	mav_mode_t mode = central_data->state.mav_mode;
-
+	altitude_estimation_update( &central_data->altitude_estimation );
+	
 	if( mode.ARMED == ARMED_OFF )
 	{
 		// Set command to current heading
@@ -133,7 +134,7 @@ task_return_t tasks_run_stabilisation(void* arg)
 		attitude_controller_update( &central_data->attitude_controller );
 		
 		// Estimate altitude
-		altitude_estimation_update( &central_data->altitude_estimation );
+		
 
 		// Control altitude
 		central_data->command.position.mode = POSITION_COMMAND_MODE_LOCAL;
