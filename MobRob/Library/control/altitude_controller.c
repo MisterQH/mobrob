@@ -68,13 +68,16 @@ void altitude_controller_init(altitude_controller_t* controller, const altitude_
 	controller->hover_point = config->hover_point;
 	//controller->p_gain = config->p_gain;
 	pid_controller_init(&controller->alt_pid, &config->alt_pid_config);
+	pid_controller_init(&controller->alt_rate_pid, &config->alt_rate_pid_config);
 }
 
 
 void altitude_controller_update(altitude_controller_t* controller)
 {
 	float error = 0.0f;
-
+	float rate_error = 0.0f;
+	
+	
 	switch( controller->position_command->mode )
 	{
 		case POSITION_COMMAND_MODE_LOCAL:
@@ -87,5 +90,7 @@ void altitude_controller_update(altitude_controller_t* controller)
 	}
 
 	//controller->thrust_command->thrust = controller->hover_point - controller->p_gain * error;
-	controller->thrust_command->thrust = controller->hover_point - pid_controller_update(&controller->alt_pid, error);
+	rate_error = -controller->altitude_estimated->rate;
+	rate_error += controller->hover_point - pid_controller_update(&controller->alt_pid, error);
+	controller->thrust_command->thrust = pid_controller_update(&controller->alt_rate_pid, rate_error);
 }

@@ -59,6 +59,7 @@ typedef struct
 {
 	float						p_gain;				///< Proportionnal gain
 	pid_controller_t			alt_pid;
+	pid_controller_t			alt_rate_pid;
 	float						hover_point;		///< Thrust required to hover
 	const position_command_t*	position_command;	///< Pointer to altitude command (input)
 	const altitude_t* 			altitude_estimated; ///< Pointer to estimated altitude (input)
@@ -74,6 +75,7 @@ typedef struct
 	float p_gain;			///< Proportionnal gain
 	float hover_point;		///< Thrust required to hover
 	pid_controller_conf_t alt_pid_config; 
+	pid_controller_conf_t alt_rate_pid_config;
 } altitude_controller_conf_t;	
 
 
