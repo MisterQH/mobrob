@@ -273,7 +273,7 @@ src/central_data.d src/central_data.o src/central_data.o: \
  ../Library/communication/remote.h \
  ../Library/communication/data_logging_default_config.h \
  ../Library/communication/data_logging.h ../src/config/imu_config.h \
- ../src/config/conf_platform.h ../src/config/MAVcalib/MAV004_imu_config.h \
+ ../src/config/conf_platform.h ../src/config/MAVcalib/MAV069_imu_config.h \
  ../Library/control/attitude_controller_default_config.h \
  ../Library/control/attitude_controller.h \
  ../Library/control/velocity_controller_copter_default_config.h \
@@ -903,7 +903,7 @@ d:\programmes\atmel\studio\7.0\toolchain\avr32\avr32-gnu-toolchain\bin\../lib/gc
 
 ../src/config/conf_platform.h:
 
-../src/config/MAVcalib/MAV004_imu_config.h:
+../src/config/MAVcalib/MAV069_imu_config.h:
 
 ../Library/control/attitude_controller_default_config.h:
 

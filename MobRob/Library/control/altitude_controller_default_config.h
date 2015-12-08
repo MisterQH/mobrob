@@ -51,8 +51,35 @@ extern "C" {
 
 static altitude_controller_conf_t altitude_controller_default_config =
 {
-	.p_gain = 0.2f,
+	
+	// -----------------------------------------------------------------
+	// ------- Altitude PID --------------------------------------------
+	// -----------------------------------------------------------------
+	/* Ancien P
+	.p_gain = 0.2f,*/
+	
 	.hover_point = -0.3f,
+	.alt_pid_config =
+	{
+
+			.p_gain = 0.05f,
+			.clip_min = -0.9f,
+			.clip_max = 0.9f,
+			.integrator =
+			{
+				.pregain = 0.05f,
+				.postgain = 0.05f,
+				.accumulator = 0.0f,
+				.clip = 0.65f,
+			},
+			.differentiator =
+			{
+				.gain = 0.25f,
+				.previous = 0.0f,
+				.clip = 0.65f
+			},
+			.soft_zone_width = 0.0f,
+	}
 };
 
 #ifdef __cplusplus

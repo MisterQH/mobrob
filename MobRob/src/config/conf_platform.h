@@ -46,7 +46,7 @@
 	extern "C" {
 #endif  
 
-#define MAVLINK_SYS_ID 4
+#define MAVLINK_SYS_ID 69
 
 ///< Definitions of Platform configuration
 #define M_REAR_LEFT 0		///< Define the index for the control
