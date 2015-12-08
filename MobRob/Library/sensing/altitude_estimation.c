@@ -108,11 +108,11 @@ void altitude_estimation_update(altitude_estimation_t* estimator)
 
     sonar_old = sonar_filtered;
 
-    float acc_integral += estimator->ahrs->linear_acc[2] * delta_t;
+    acc_integral += estimator->ahrs->linear_acc[2] * delta_t;
 
     float acc_int_filtered = high_pass_filter(acc_integral,
-                                            acc_z_old,
-                                            acc_z_old_y,
+                                            acc_int_old,
+                                            acc_int_old_y,
                                             delta_t,
                                             1.0f);
 
