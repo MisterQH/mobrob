@@ -91,6 +91,8 @@ void altitude_estimation_update(altitude_estimation_t* estimator)
     static float acc_z_old = 0.0f;
     static float acc_z_old_y = 0.0f;
 
+    static float acc_integral = 0.0f;
+
     static uint32_t time_stamp_old = 0;
 
     uint32_t time_stamp = time_keeper_get_micros();
@@ -108,11 +110,11 @@ void altitude_estimation_update(altitude_estimation_t* estimator)
                                             acc_z_old,
                                             acc_z_old_y,
                                             delta_t,
-                                            0.1f);
+                                            1.0f);
     acc_z_old = estimator->ahrs->linear_acc[2];
     acc_z_old_y = acc_z_filtered;
 
-    float acc_integral = 0.5 * acc_z_filtered * delta_t * delta_t;
+    acc_integral += 0.5 * acc_z_filtered * delta_t * delta_t;
 
 	//estimator->altitude_estimated->above_ground = -estimator->sonar->current_distance;
 	estimator->altitude_estimated->above_ground = sonar_filtered + acc_integral;
