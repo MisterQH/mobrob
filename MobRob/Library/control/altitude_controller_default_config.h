@@ -79,7 +79,7 @@ static altitude_controller_conf_t altitude_controller_default_config =
 				.clip = 0.65f
 			},
 			.soft_zone_width = 0.0f,
-	}
+	},
 	
 	.alt_rate_pid_config =
 	{

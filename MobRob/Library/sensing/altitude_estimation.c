@@ -102,7 +102,7 @@ void altitude_estimation_update(altitude_estimation_t* estimator)
     float sonar_filtered = low_pass_filter(-estimator->sonar->current_distance,
                                            sonar_old,
                                            delta_t,
-                                           1.0f);
+                                           0.1f);
 
     float sonar_rate = (sonar_filtered - sonar_old) / delta_t;
 
@@ -114,7 +114,7 @@ void altitude_estimation_update(altitude_estimation_t* estimator)
                                             acc_int_old,
                                             acc_int_old_y,
                                             delta_t,
-                                            1.0f);
+                                            0.01f);
 
     acc_int_old = acc_integral;
     acc_int_old_y = acc_int_filtered;
