@@ -94,7 +94,7 @@ static float accelerometer_hp_hp_integral(float x, float delta_t, float tau)
     y = delta_t * alpha * alpha * (x - x_1) + 2 * alpha * y_1 - alpha * alpha * y_2;
 
     x_1 = x;
-    y_2 = y1;
+    y_2 = y_1;
     y_1 = y;
 
     return y;
@@ -108,10 +108,10 @@ static float sonar_lp_lp_diff(float x, float delta_t, float tau)
 	float alpha = delta_t / (delta_t + tau);
     float alpha_comp = 1 - alpha;
 
-    y = delta_t * alpha * alpha * (x - x_1) + 2 * alpha_comp * y_1 - alpha_comp * alpha_comp * y_2;
+    y = 1/delta_t * alpha * alpha * (x - x_1) + 2 * alpha_comp * y_1 - alpha_comp * alpha_comp * y_2;
 
     x_1 = x;
-    y_2 = y1;
+    y_2 = y_1;
     y_1 = y;
 
     return y;
@@ -131,7 +131,8 @@ static float sonar_lp(float x, float delta_t, float tau)
 
 void altitude_estimation_update(altitude_estimation_t* estimator)
 {
-    float tau = 0.2f;
+    float tau_altitude = 0.2f;
+	float tau_rate = 0.5f;
     static uint32_t time_stamp_old = 0;
 
     uint32_t time_stamp = time_keeper_get_micros();
@@ -141,15 +142,15 @@ void altitude_estimation_update(altitude_estimation_t* estimator)
 
     float sonar = sonar_lp(-estimator->sonar->current_distance,
                            delta_t,
-                           tau);
+                           tau_altitude);
 
     float sonar_rate = sonar_lp_lp_diff(-estimator->sonar->current_distance,
                                         delta_t,
-                                        tau)
+                                        tau_rate);
 
     float accelerometer_rate = accelerometer_hp_hp_integral(estimator->ahrs->linear_acc[2],
                                                             delta_t,
-                                                            tau);
+                                                            tau_rate);
 
     estimator->altitude_estimated->rate = sonar_rate + accelerometer_rate;
     estimator->altitude_estimated->above_ground = sonar;
