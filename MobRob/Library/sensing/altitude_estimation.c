@@ -84,14 +84,54 @@ static float high_pass_filter(float x, float x_old, float y_old, float deltaT, f
 	return y;
 }
 
+static float accelerometer_hp_hp_integral(float x, float delta_t, float tau)
+{
+    static float x_1 = 0;
+    static float y = 0, y_1 = 0, y_2 = 0;
+
+	float alpha = tau/(delta_t+tau);
+
+    y = delta_t * alpha * alpha * (x - x_1) + 2 * alpha * y_1 - alpha * alpha * y_2;
+
+    x_1 = x;
+    y_2 = y1;
+    y_1 = y;
+
+    return y;
+}
+
+static float sonar_lp_lp_diff(float x, float delta_t, float tau)
+{
+    static float x_1 = 0;
+    static float y = 0, y_1 = 0, y_2 = 0;
+
+	float alpha = delta_t / (delta_t + tau);
+    float alpha_comp = 1 - alpha;
+
+    y = delta_t * alpha * alpha * (x - x_1) + 2 * alpha_comp * y_1 - alpha_comp * alpha_comp * y_2;
+
+    x_1 = x;
+    y_2 = y1;
+    y_1 = y;
+
+    return y;
+}
+
+static float sonar_lp(float x, float delta_t, float tau)
+{
+    static float y_1 = 0;
+
+	float alpha = delta_t / (delta_t + tau);
+	float y = alpha * x + (1-alpha) * y_1;
+
+    y_1 = y;
+
+	return y;
+}
+
 void altitude_estimation_update(altitude_estimation_t* estimator)
 {
-
-    static float sonar_old = 0.0f;
-    static float acc_int_old = 0.0f;
-    static float acc_int_old_y = 0.0f;
-    static float acc_integral = 0.0f;
-
+    float tau = 0.2f;
     static uint32_t time_stamp_old = 0;
 
     uint32_t time_stamp = time_keeper_get_micros();
@@ -99,29 +139,20 @@ void altitude_estimation_update(altitude_estimation_t* estimator)
     float delta_t = (float)(time_stamp - time_stamp_old) / 1000000.0f;
     time_stamp_old = time_stamp;
 
-    float sonar_filtered = low_pass_filter(-estimator->sonar->current_distance,
-                                           sonar_old,
-                                           delta_t,
-                                           1.0f);
+    float sonar = sonar_lp(-estimator->sonar->current_distance,
+                           delta_t,
+                           tau);
 
-    float sonar_rate = (sonar_filtered - sonar_old) / delta_t;
+    float sonar_rate = sonar_lp_lp_diff(-estimator->sonar->current_distance,
+                                        delta_t,
+                                        tau)
 
-    sonar_old = sonar_filtered;
+    float accelerometer_rate = accelerometer_hp_hp_integral(estimator->ahrs->linear_acc[2],
+                                                            delta_t,
+                                                            tau);
 
-    acc_integral += estimator->ahrs->linear_acc[2] * delta_t;
-
-    float acc_int_filtered = high_pass_filter(acc_integral,
-                                            acc_int_old,
-                                            acc_int_old_y,
-                                            delta_t,
-                                            1.0f);
-
-    acc_int_old = acc_integral;
-    acc_int_old_y = acc_int_filtered;
-
-
-    estimator->altitude_estimated->rate = sonar_rate + acc_int_filtered;
-    estimator->altitude_estimated->above_ground = sonar_filtered;
+    estimator->altitude_estimated->rate = sonar_rate + accelerometer_rate;
+    estimator->altitude_estimated->above_ground = sonar;
     estimator->altitude_estimated->above_sea = 400.0f;
 
 }
