@@ -256,14 +256,14 @@ void mavlink_telemetry_add_onboard_parameters(onboard_parameters_t * onboard_par
 	//onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.p_gain, 		"AltCtl_Kp"     	);
 	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.hover_point, "AltCtl_hoverPt"	);
 	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->command.position.xyz[2], 		"AltCtl_command"	);
-	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_pid.p_gain,  "AltCtl_PIDKp");
-	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_pid.integrator.postgain,  "AltCtl_PID_IntPostK");
-	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_pid.integrator.pregain,  "AltCtl_PID_IntPreK");
-	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_pid.differentiator.gain,  "AltCtl_PID_Kd");
-	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_rate_pid.p_gain,  "AltCtl_RatePIDKp");
-	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_rate_pid.integrator.postgain,  "AltCtl_RatePID_IntPostK");
-	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_rate_pid.integrator.pregain,  "AltCtl_RatePID_IntPreK");
-	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_rate_pid.differentiator.gain,  "AltCtl_RatePID_Kd");
+	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_pid.p_gain,  "AltCtl_Kp");
+	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_pid.integrator.postgain,  "AltCtl_PostKi");
+	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_pid.integrator.pregain,  "AltCtl_PreKi");
+	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_pid.differentiator.gain,  "AltCtl_Kd");
+	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_rate_pid.p_gain,  "AltCtl_Rate_Kp");
+	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_rate_pid.integrator.postgain,  "AltCtl_Rate_PostKi");
+	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_rate_pid.integrator.pregain,  "AltCtl_Rate_PreKi");
+	onboard_parameters_add_parameter_float( onboard_parameters, &central_data->altitude_controller.alt_rate_pid.differentiator.gain,  "AltCtl_Rate_Kd");
 }
 
 
