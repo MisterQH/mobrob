@@ -92,4 +92,7 @@ void altitude_controller_update(altitude_controller_t* controller)
 	rate_error = -controller->altitude_estimated->rate;
 	rate_error += pid_controller_update(&controller->alt_pid, error);
 	controller->thrust_command->thrust = controller->hover_point - pid_controller_update(&controller->alt_rate_pid, rate_error);
+
+    controller->altitude_estimated->vel_pid_out = controller->thrust_command->thrust;
+    controller->altitude_estimated->pos_pid_out = rate_error;
 }
