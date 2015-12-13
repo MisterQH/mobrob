@@ -32,3 +32,17 @@ figure(3)
 step(hp * inte); hold on; grid on;
 step(hp^2 * inte);
 legend('1st order high pass * integral', '2nd order high pass * integral')
+
+figure(4)
+bode(hp * inte); grid on;
+xlim([10^-1, 10^3])
+
+figure(5)
+bode(lp * diff); grid on;
+
+figure(6)
+step(lp); grid on; hold on;
+step(lp * diff / 5)
+step(hp)
+step(lp * lp * diff / 3)
+legend('1st order low pass', '1st order low pass * derivator', '1st order high pass', '2nd order low pass * derivator')
