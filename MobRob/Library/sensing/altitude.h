@@ -50,6 +50,8 @@ extern "C" {
 /**
  * \brief Structure containing the Altitude
  */
+
+
 typedef struct
 {
 	float above_ground;		///< Altitude above ground (<0)

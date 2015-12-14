@@ -41,6 +41,7 @@
 
 #include "altitude_estimation_telemetry.h"
 #include "time_keeper.h"
+#include "central_data.h"
 
 void altitude_estimation_telemetry_send(const altitude_estimation_t* altitude_estimation,
 										const mavlink_stream_t* mavlink_stream,
@@ -53,8 +54,8 @@ void altitude_estimation_telemetry_send(const altitude_estimation_t* altitude_es
 									altitude_estimation->ahrs->linear_acc[0],			// float xacc,
 									altitude_estimation->ahrs->linear_acc[1],			// float yacc,
 									altitude_estimation->ahrs->linear_acc[2],			// float zacc,
-									altitude_estimation->altitude_estimated->pos_pid_out,	// float xgyro,
-									altitude_estimation->altitude_estimated->vel_pid_out,	// float ygyro,
+									pos_pid_out,	// float xgyro,
+									vel_pid_out,	// float ygyro,
 									altitude_estimation->sonar->current_distance,		// float zgyro,
 									0.0f,												// float xmag,
 									altitude_estimation->barometer->vario_vz,			// float ymag,

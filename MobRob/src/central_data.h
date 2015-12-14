@@ -99,6 +99,8 @@ extern "C" {
 #include "altitude.h"
 #include "altitude_estimation.h"
 
+extern float vel_pid_out;
+extern float pos_pid_out;
 
 /**
  * \brief The central data structure

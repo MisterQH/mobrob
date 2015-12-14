@@ -132,7 +132,7 @@ static float sonar_lp(float x, float delta_t, float tau)
 void altitude_estimation_update(altitude_estimation_t* estimator)
 {
     float tau_altitude = 0.2f;
-	float tau_rate = 0.3f;
+	float tau_rate = 0.1f;
     static uint32_t time_stamp_old = 0;
 
     uint32_t time_stamp = time_keeper_get_micros();

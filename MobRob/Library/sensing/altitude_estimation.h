@@ -62,8 +62,6 @@ typedef struct
 	const barometer_t* 	barometer;				///< Pointer to barometer (input)
 	const ahrs_t* 		ahrs;					///< Pointer to estimated attitude and acceleration (input)
 	altitude_t* 		altitude_estimated; 	///< Pointer to estimated altitude (output)
-    float vel_pid_out;
-    float pos_pid_out;
 } altitude_estimation_t;
 
 

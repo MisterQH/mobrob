@@ -71,6 +71,9 @@
  
 static central_data_t central_data;
 
+float vel_pid_out;
+float pos_pid_out;
+
 void central_data_init()
 {	
 	//--------------------------------------------------------------------------
