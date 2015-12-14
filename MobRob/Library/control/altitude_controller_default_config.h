@@ -62,7 +62,7 @@ static altitude_controller_conf_t altitude_controller_default_config =
 	.alt_pid_config =
 	{
 
-			.p_gain = 0.05f,
+			.p_gain = 8.0f,
 			.clip_min = -0.9f,
 			.clip_max = 0.9f,
 			.integrator =
@@ -74,7 +74,7 @@ static altitude_controller_conf_t altitude_controller_default_config =
 			},
 			.differentiator =
 			{
-				.gain = 0.0f,
+				.gain = 1.0f,
 				.previous = 0.0f,
 				.clip = 0.65f
 			},
@@ -89,8 +89,8 @@ static altitude_controller_conf_t altitude_controller_default_config =
 		.clip_max = 0.9f,
 		.integrator =
 		{
-			.pregain = 0.1f,
-			.postgain = 0.1f,
+			.pregain = 0.3f,
+			.postgain = 0.3f,
 			.accumulator = 0.0f,
 			.clip = 0.65f,
 		},
