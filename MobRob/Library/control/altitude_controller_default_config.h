@@ -74,7 +74,7 @@ static altitude_controller_conf_t altitude_controller_default_config =
 			},
 			.differentiator =
 			{
-				.gain = 1.2f,
+				.gain = 1.0f,
 				.previous = 0.0f,
 				.clip = 0.65f
 			},
